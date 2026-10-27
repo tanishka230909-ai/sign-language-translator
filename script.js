@@ -158,19 +158,33 @@ async function startCamera() {
 
     predictLoop();
 
-  } catch (error) {
-    console.error("Camera or model error:", error);
+ } catch (error) {
+  console.error("Camera or model error:", error);
 
-    predictionText.textContent = "Unable to start";
-    predictionMessage.textContent =
-      "Please allow camera access and check your internet connection. " +
-      "If the problem continues, verify the model URL.";
-
-    cameraStatus.textContent = "Camera unavailable";
-    startButton.disabled = false;
-
-    stopCamera();
+  if (webcam) {
+    try {
+      webcam.stop();
+    } catch (stopError) {
+      console.warn("Webcam cleanup:", stopError);
+    }
+    webcam = null;
   }
+
+  cameraRunning = false;
+  predictionLoopRunning = false;
+  webcamContainer.replaceChildren();
+  cameraPlaceholder.style.display = "";
+
+  cameraStatus.innerHTML =
+    '<span class="status-dot"></span> Camera unavailable';
+
+  startButton.disabled = false;
+  stopButton.disabled = true;
+
+  predictionText.textContent = "Unable to start";
+  predictionMessage.textContent =
+    "Error: " + (error.message || "Unknown camera or model error");
+}
 }
 
 // Continuously predict the gesture visible in the webcam.
