@@ -7,7 +7,7 @@
 // Your existing Teachable Machine model.
 // Replace this URL after training your improved model.
 const MODEL_URL =
-  "https://teachablemachine.withgoogle.com/models/ZMVZqIwsw/";
+  "https://storage.googleapis.com/tm-model/ZMVZqIWsw/";
 
 let model = null;
 let webcam = null;
