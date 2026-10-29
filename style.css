@@ -1934,3 +1934,25 @@ canvas {
     transition-duration: 0.01ms !important;
   }
 }
+
+.sign-card[role="button"] {
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.sign-card[role="button"]:hover,
+.sign-card[role="button"]:focus-visible {
+  transform: translateY(-4px);
+  outline: 2px solid #8b9cff;
+  outline-offset: 3px;
+}
+
+.sign-detail {
+  margin-top: 24px;
+  padding: 24px;
+}
+
+.sign-detail[hidden] {
+  display: none;
+}
+
