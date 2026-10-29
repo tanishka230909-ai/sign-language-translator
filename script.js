@@ -270,7 +270,7 @@ function showPrediction(label, probability) {
       Date.now() - lastAddedTime > 2500
     )
   ) {
-    addConversationMessage(cleanLabel);
+    
 
     lastAddedGesture = normalised;
     lastAddedTime = Date.now();
