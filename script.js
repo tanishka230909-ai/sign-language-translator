@@ -529,7 +529,10 @@ document.querySelectorAll(".sign-card").forEach((card) => {
     const title = document.getElementById("signDetailTitle");
     const text = document.getElementById("signDetailText");
 
-    if (!detail || !title || !text) return;
+    if (!detail || !title || !text) {
+  console.error("Learn Signs error: One or more detail panel elements are missing.");
+  return;
+}
 
     title.textContent = name;
     text.textContent = signDetails[name] ||
