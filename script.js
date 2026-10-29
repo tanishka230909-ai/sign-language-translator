@@ -159,6 +159,8 @@ webcam.canvas.style.width = "100%";
 webcam.canvas.style.height = "auto";
 webcam.canvas.style.maxWidth = "420px";
 webcam.canvas.style.borderRadius = "16px";
+     
+webcam.webcam.style.transform = "scaleX(-1)";
 
 
     cameraRunning = true;
