@@ -130,7 +130,7 @@ async function startCamera() {
       );
     }
 
-    webcam = new tmImage.Webcam(420, 315, true);
+    webcam = new tmImage.Webcam(420, 315, false);
 
     await webcam.setup();
     await webcam.play();
