@@ -135,14 +135,24 @@ async function startCamera() {
     await webcam.setup();
     await webcam.play();
 
-    webcamContainer.replaceChildren(webcam.canvas);
-     webcamContainer.style.display = "block";
-webcam.canvas.width = 420;
+   
+webcamContainer.replaceChildren(webcam.canvas);
 
-    webcam.canvas.style.width = "100%";
-    webcam.canvas.style.height = "auto";
-    webcam.canvas.style.display = "block";
-    webcam.canvas.style.borderRadius = "16px";
+webcamContainer.style.display = "block";
+webcamContainer.style.visibility = "visible";
+webcamContainer.style.width = "100%";
+webcamContainer.style.minHeight = "315px";
+webcamContainer.style.overflow = "hidden";
+
+webcam.canvas.width = 420;
+webcam.canvas.height = 315;
+webcam.canvas.style.display = "block";
+webcam.canvas.style.visibility = "visible";
+webcam.canvas.style.width = "100%";
+webcam.canvas.style.height = "auto";
+webcam.canvas.style.maxWidth = "420px";
+webcam.canvas.style.borderRadius = "16px";
+
 
     cameraRunning = true;
     predictionLoopRunning = true;
