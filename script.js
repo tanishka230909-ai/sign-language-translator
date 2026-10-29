@@ -136,6 +136,8 @@ async function startCamera() {
     await webcam.play();
 
     webcamContainer.replaceChildren(webcam.canvas);
+     webcamContainer.style.display = "block";
+webcam.canvas.width = 420;
 
     webcam.canvas.style.width = "100%";
     webcam.canvas.style.height = "auto";
