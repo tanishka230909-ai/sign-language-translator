@@ -504,3 +504,53 @@ window.addEventListener("pagehide", () => {
 });
 
 console.log("SignConnect website initialised.");
+
+const signDetails = {
+  "Hello": "A greeting used to acknowledge or welcome someone.",
+  "Yes": "An affirmative response meaning agreement or confirmation.",
+  "No": "A negative response meaning disagreement or refusal.",
+  "Thank You": "An expression of gratitude or appreciation.",
+  "Help": "A label representing a request for assistance.",
+  "Sorry": "An expression of apology or regret."
+};
+
+document.querySelectorAll(".sign-card").forEach((card) => {
+  const heading = card.querySelector("h3");
+  if (!heading) return;
+
+  const name = heading.textContent.trim();
+
+  card.setAttribute("role", "button");
+  card.setAttribute("tabindex", "0");
+  card.setAttribute("aria-label", "Learn about " + name);
+
+  function showSignDetails() {
+    const detail = document.getElementById("signDetail");
+    const title = document.getElementById("signDetailTitle");
+    const text = document.getElementById("signDetailText");
+
+    if (!detail || !title || !text) return;
+
+    title.textContent = name;
+    text.textContent = signDetails[name] ||
+      "This is a label included in the SignConnect prototype.";
+
+    detail.hidden = false;
+    detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  card.addEventListener("click", showSignDetails);
+
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      showSignDetails();
+    }
+  });
+});
+
+document.getElementById("closeSignDetail")?.addEventListener("click", () => {
+  const detail = document.getElementById("signDetail");
+  if (detail) detail.hidden = true;
+});
+
