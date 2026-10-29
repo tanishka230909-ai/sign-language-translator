@@ -349,11 +349,7 @@ function addConversationMessage(message) {
 
   speakConversationButton.disabled = false;
 
-  // Keep the newest message visible.
-  bubble.scrollIntoView({
-    behavior: "smooth",
-    block: "nearest"
-  });
+  
 }
 
 // Add manually typed text to the conversation.
