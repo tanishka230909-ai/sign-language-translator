@@ -280,18 +280,15 @@ function showPrediction(label, probability) {
 
   speakPredictionButton.disabled = false;
 
-  // Add a gesture only after it remains stable.
-  // A short cooldown prevents the same held sign being repeated.
+   // Add each stable gesture to the conversation only once
+  // until a different gesture is recognised.
   const normalised = cleanLabel.toLowerCase();
 
   if (
     !IGNORED_LABELS.includes(normalised) &&
-    (
-      lastAddedGesture !== normalised ||
-      Date.now() - lastAddedTime > 2500
-    )
+    lastAddedGesture !== normalised
   ) {
-    
+    addConversationMessage(cleanLabel);
 
     lastAddedGesture = normalised;
     lastAddedTime = Date.now();
